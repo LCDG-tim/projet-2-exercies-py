@@ -8,6 +8,7 @@
 import re
 # =============================================================================
 
+
 def ex4(n: int, m: int, days_f: list) -> int:
 
     assert isinstance(n, int), \
