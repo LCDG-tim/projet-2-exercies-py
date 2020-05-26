@@ -2,6 +2,11 @@
 # le \ permet de continuer la ligne précédentes à la ligne suivantes
 # les il signifie le programme
 
+# =============================================================================
+# importations :
+
+import re
+# =============================================================================
 
 def ex4(n: int, m: int, days_f: list) -> int:
 
@@ -44,12 +49,25 @@ def ex4(n: int, m: int, days_f: list) -> int:
 
 if __name__ == "__main__":
     # 1ere ligne d'entrée nb_ami et nobre de jours de voyage
-    nb_amis, nb_jours = input().split(" ")
+    input1 = input("1ere entrée : ")
+
+    # vérification format
+    while not re.findall(r"^\d+ \d+$", input1):
+        input1 = input('format non valide réessaye : ')
+
+    nb_amis, nb_jours = input1.split(" ")
+
     # transition str -> int
     nb_amis: int = int(nb_amis)
     nb_jours: int = int(nb_jours)
+
     # 2e ligne entrée liste d'entiers séparés par un espace
-    day_with_friends: list = sorted([int(i) for i in input().split(" ")])
+    input2 = input()
+    # vérification format
+    while not re.findall(" ".join([r"\d+"] * nb_amis), input2):
+        input2 = input("format non valide réessaye : ")
+
+    day_with_friends: list = sorted([int(i) for i in input2.split(" ")])
     # le programme appelle la fonction
     print(ex4(nb_amis, nb_jours, day_with_friends))
 
